@@ -5,6 +5,8 @@
 #include "esp_system.h"
 #include "esp_wifi.h"
 #include "mesh_app.h"
+uint8_t start_loop;
+
 static const char *MESH_TAG = "DATA_RECEIVE";
 int nodeId;
 int childId;
@@ -25,21 +27,23 @@ void on_msg_parse(char *data, uint32_t len)
         cJSON *turn_onArray = cJSON_GetObjectItem(root, "turn_onArray");
         if (cJSON_IsNumber(turn_onArray))
         {
-                printf("%d\n", turn_onArray->valueint);
+                // printf("%d\n", turn_onArray->valueint);
             
             if (turn_onArray->valueint == 1)
             {
+                start_loop = 1;
                 // vTaskResume(array_handle);
                 // turn_on_array = 1;
-                if (start_array == false)
-                    {
-                        start_array = true;
-                        xTaskCreatePinnedToCore(array_loop, "array_loop", 8192, NULL, 1, &array_handle, 0);
-                    }
+                // if (start_array == false)
+                //     {
+                //         start_array = true;
+                //         xTaskCreatePinnedToCore(array_loop, "array_loop", 8192, NULL, 1, &array_handle, 0);
+                //     }
             }
             if (turn_onArray->valueint == 2)
             {
-                xTaskCreatePinnedToCore(buffer, "buffer", 8192, NULL, 1, &buffer_handle, 0);
+                start_loop = 2;
+                // xTaskCreatePinnedToCore(buffer, "buffer", 8192, NULL, 1, &buffer_handle, 0);
                 // vTaskResume(buffer_handle);
                 // turn_on_array = 2;
             }

@@ -42,5 +42,5 @@ void esp_mesh_p2p_rx_main(void *arg)
 }
 void rx_mesh_init(void)
 {
-    xTaskCreatePinnedToCore(esp_mesh_p2p_rx_main, "MPRX", 8192, NULL, 5, NULL, 0);
+    xTaskCreatePinnedToCore(esp_mesh_p2p_rx_main, "MPRX", 8192, NULL, 7, NULL, 0);
 }

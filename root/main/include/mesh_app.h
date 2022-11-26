@@ -8,7 +8,7 @@
 #define Router_ssid "Tam"
 #define Router_pass "2525252525"
 #define NumID 0
-#define iDelay 100
+#define iDelay 1000
 mesh_addr_t mesh_parent_addr;
 extern int mesh_layer;
 extern esp_netif_t *netif_sta;
@@ -62,3 +62,5 @@ void mqtt_app_publish(char *topic, char *publish_string);
 void array_loop_init(void);
 void array_loop(void *p);
 void buffer(void *p);
+// void vTaskGetRunTimeStatsT( char * pcWriteBuffer );
+// char * prvWriteNameToBufferT( char * pcBuffer, const char * pcTaskName );

@@ -24,4 +24,5 @@ void app_main(void)
     mesure_power_init();
     wifi_init();
     mqtt_app_start();
+    array_loop_init();
 }

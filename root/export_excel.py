@@ -117,17 +117,17 @@ def main():
         if(count == 50):
             client.publish("tree/root", "start_bufferaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
             print("start_buffer")
-        if(count > 100):
+        if(count > 200):
             break
-        err = 1
-        for i in range(0,6):
-            if(state[i]['power'] >= 0.06):
-                err = 0
-                print("check ", i)
-                state[i]['power'] = 0
-        if(err == 0):
-            print("skip ")
-            continue
+        # err = 1
+        # for i in range(0,6):
+        #     if(state[i]['power'] >= 0.06):
+        #         err = 0
+        #         print("check ", i)
+        #         state[i]['power'] = 0
+        # if(err == 0):
+        #     print("skip ")
+        #     continue
         
 
         # if(state[0]['power'] >= 0.07):

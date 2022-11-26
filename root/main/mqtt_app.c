@@ -51,38 +51,8 @@ static esp_err_t mqtt_event_handler_cb(esp_mqtt_event_handle_t event)
         ESP_LOGI(TAG, "ROOT RECIEVE (%.*s) FROM MQTT", event->data_len, event->data);
         memset(data_rx, 0, sizeof(data_rx));
         strncpy(data_rx, event->data, event->data_len);
-        if (strncmp("startloop", event->data, event->data_len) == 0)
-        {
-            start_loop = 1;
-            // if (state)
-            // {
-            //     // ESP_LOGI(TAG, "START LOOP");
-            //     vTaskResume(array_handle);
-            // }
-            // else
-            // if (state == false)
-            // {
-            //     state = true;
-            //     xTaskCreatePinnedToCore(array_loop, "array_loop", 8192, NULL, 1, &array_handle, 0);
-            // }
-
-            xTaskCreatePinnedToCore(array_loop, "array_loop", 8192, NULL, 1, &array_handle, 0);
-        }
-        // if (strstr(event->data, "start_buffer") != NULL)
-        // {
-        //     start_loop = 2;
-        //     vTaskSuspend(array_handle);
-
-        //     if (state_buffer)
-        //     {
-        //         vTaskResume(buffer_handle);
-        //     }
-        //     else if (state_buffer == false)
-        //     {
-        //         state_buffer = true;
-        //         xTaskCreatePinnedToCore(buffer, "buffer", 8192, NULL, 1, &buffer_handle, 0);
-        //     }
-        // }
+        
+        
     }
     break;
     case MQTT_EVENT_ERROR:

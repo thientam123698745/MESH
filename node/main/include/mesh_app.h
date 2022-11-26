@@ -5,7 +5,7 @@
 #define num_ap_connected 10
 #define Router_ssid "Tam"
 #define Router_pass "2525252525"
-#define NumID 3
+#define NumID 1
 #define iDelay 100
 mesh_addr_t mesh_parent_addr;
 extern int mesh_layer;
@@ -13,6 +13,7 @@ extern esp_netif_t *netif_sta;
 extern int nodeId;
 extern int childId;
 extern int my_layer;
+extern uint8_t start_loop;
 
 typedef struct
 {

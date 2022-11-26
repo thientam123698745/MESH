@@ -4,6 +4,7 @@
 #include "esp_log.h"
 #include "mesh_app.h"
 unsigned long ccount;
+char RunTime[1024];
 
 void power(void *p)
 {
@@ -14,10 +15,11 @@ void power(void *p)
     while (true)
     {
         // printf("power1");
-        BENCHMARK_START();
+        // BENCHMARK_START();
+        vTaskGetRunTimeStats(RunTime);
         xWasDelayed = xTaskDelayUntil( &xLastWakeTime, xFrequency );
         // vTaskDelay(iDelay / portTICK_RATE_MS);
-        BENCHMARK_END(&ccount); 
+        // BENCHMARK_END(&ccount); 
     }
 }
 void power2(void *p)
@@ -40,10 +42,11 @@ void power2(void *p)
     while (true)
     {
         xWasDelayed = xTaskDelayUntil( &xLastWakeTime, xFrequency );
-        double sensor = ccount * 0.08 * 3.3 / 160000000 * 100 /iDelay;
+        // double sensor = ccount * 0.08 * 3.3 / 160000000 * 100 /iDelay;
         // ESP_LOGI("MESH_POWER", "power=%02f", sensor);
         data.tos = 0;
-        msg_create_power(demo, 1024, sensor);
+        // printf("RunTime: %d\n", atoi(RunTime));
+        msg_create_power(demo, 1024, (double) atoi(RunTime));
         if (my_layer == 3)
         {
             mesh_addr_t parent;

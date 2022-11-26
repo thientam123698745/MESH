@@ -19,7 +19,7 @@ void scan_device_route(void *p)
         // ESP_LOGI(MESH_TAG, "Dang scan device");
         esp_mesh_get_routing_table((mesh_addr_t *)&device_node.route_table,
                                    50 * num_ap_connected, &device_node.route_table_size);
-        ESP_LOGI(MESH_TAG, "scan_device_route:: Number ap connected: %d Rount table size: %d", num_ap_connected, device_node.route_table_size);
+        // ESP_LOGI(MESH_TAG, "scan_device_route:: Number ap connected: %d Rount table size: %d", num_ap_connected, device_node.route_table_size);
 
         vTaskDelay(5 * 1000 / portTICK_RATE_MS);
     }
